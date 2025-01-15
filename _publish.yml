@@ -1,0 +1,4 @@
+- source: district_clustering.qmd
+  quarto-pub:
+    - id: 0d743c29-18c0-4502-a183-51b47d2e9beb
+      url: 'https://quartopub.com/sites/samgoodson/election-district-k-means'

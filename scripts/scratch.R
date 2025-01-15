@@ -2,7 +2,7 @@ library(tidyverse)
 library(sf)
 library(leaflet)
 
-jm_data <- read_csv("C:/Users/samtg/github/cc_election_cleaning/precinct_level_efa_nypd_noise_dec03.csv")
+jm_data <- read_csv("../cc_election_cleaning/precinct_level_efa_nypd_noise_dec03.csv")
 jm_short <- jm_data %>%
   select(!c(Shape_Leng,Shape_Area,geometry))
 #drop data with high NA
@@ -35,7 +35,7 @@ leaflet(eds) |>
   ) |> 
   addLegend(pal = pal, values = ~cluster, title = "District Clusters")
 
-results <- read_csv("C:/Users/samtg/github/cc_election_cleaning/election_results_with_vote_sponsor_cluster_DEC04.csv")
+results <- read_csv("../cc_election_cleaning/election_results_with_vote_sponsor_cluster_DEC04.csv")
 colnames(results)
 district_level <- results%>%
   filter(winner == TRUE)%>%

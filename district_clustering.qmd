@@ -1,11 +1,11 @@
 ---
-title: "District Clustering"
+title: "Election Districts K-Means Clustering"
 format: 
   html:
     page-layout: custom
 server: shiny
 ---
-This app clusters NYC Election Districts on two variables using K-Means clustering. First, select two variables from the drop-down menus below. The graph will update showing the clusters using a default setting of 3. Then, adjust the number of clusters to any number between 1-9. The graph will show how the data splits between these clusters, and the table below the graph will show the mean values of the selected columns for each cluster. Once you are happy with the number of clusters and the division of the data, scroll down to the map to see where the clusters lie geographically. 
+This app clusters NYC Election Districts on two variables using K-Means clustering. First, select two variables from the drop-down menus below. The graph will update showing the clusters using a default setting of 3 clusters. Then, adjust the number of clusters to any number between 1-9. The graph will show how the data splits between these clusters, and the table below the graph will show the mean values of the selected columns for each cluster. Once you are happy with the number of clusters and the division of the data, scroll down to the map to see the location of the clusters. 
 
 NB: The data has been standardized, 0 is the mean for each variable. 
 
@@ -15,9 +15,9 @@ suppressPackageStartupMessages(library(tidyverse))
 library(leaflet)
 library(sf)
 
-eds <- read_sf('nyed_22a')
+eds <- read_sf('data/nyed_22a')
 eds <- st_transform(eds, crs = 4326)
-raw <- read_csv('clustering_raw_data.csv')
+raw <- read_csv('data/clustering_raw_data.csv')
 df <- as.data.frame(scale(raw))
 lookup<-c(non_hispanic_white = 'nhw21p',non_hipanic_black = 'nhb21p',
           non_hispanic_asian = 'nha21p',hispanic = 'h21p',biden_share_2020 ='pg20jrbp',

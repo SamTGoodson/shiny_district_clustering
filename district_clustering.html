@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>District Clustering</title>
+<title>Election Districts K-Means Clustering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,7 +38,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">District Clustering</h1>
+<h1 class="title">Election Districts K-Means Clustering</h1>
 </div>
 
 
@@ -52,8 +52,8 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>This app clusters NYC Election Districts on two variables using K-Means clustering. First, select two variables from the drop-down menus below. The graph will update showing the clusters using a default setting of 3. Then, adjust the number of clusters to any number between 1-9. The graph will show how the data splits between these clusters, and the table below the graph will show the mean values of the selected columns for each cluster. Once you are happy with the number of clusters and the division of the data, scroll down to the map to see where the clusters lie geographically.</p>
-<p>NB: all data has been standardized, so 0 is the mean for each variable.</p>
+<p>This app clusters NYC Election Districts on two variables using K-Means clustering. First, select two variables from the drop-down menus below. The graph will update showing the clusters using a default setting of 3 clusters. Then, adjust the number of clusters to any number between 1-9. The graph will show how the data splits between these clusters, and the table below the graph will show the mean values of the selected columns for each cluster. Once you are happy with the number of clusters and the division of the data, scroll down to the map to see the location of the clusters.</p>
+<p>NB: The data has been standardized, 0 is the mean for each variable.</p>
 <div class="cell" data-context="setup">
 
 </div>
@@ -216,9 +216,9 @@ suppressPackageStartupMessages(library(tidyverse))
 library(leaflet)
 library(sf)
 
-eds <- read_sf('nyed_22a')
+eds <- read_sf('data/nyed_22a')
 eds <- st_transform(eds, crs = 4326)
-raw <- read_csv('clustering_raw_data.csv')
+raw <- read_csv('data/clustering_raw_data.csv')
 df <- as.data.frame(scale(raw))
 lookup<-c(non_hispanic_white = 'nhw21p',non_hipanic_black = 'nhb21p',
           non_hispanic_asian = 'nha21p',hispanic = 'h21p',biden_share_2020 ='pg20jrbp',
